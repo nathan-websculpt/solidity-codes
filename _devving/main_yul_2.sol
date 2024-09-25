@@ -16,7 +16,7 @@ contract A {
         assembly {
             let f_mem := mload(0x40) // load free memory pointer
             mstore(f_mem, index) 
-            mstore(f_mem, title) 
+            mstore(add(f_mem, 0x20), title)
             // create a new contract using the code at memory location 0x20
             let b := create(0, 0x40, 0x1000)
             // add the new contract to the deployments array
@@ -34,7 +34,7 @@ contract B {
     uint256 public index;
     string public title;
 
-    constructor(uint256 _index, string memory _title) {
+    constructor() {
         assembly {
             // set the index and title
             sstore(0, mload(0x80))
