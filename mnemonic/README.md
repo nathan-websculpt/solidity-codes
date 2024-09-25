@@ -1,8 +1,18 @@
 ## Running and testing opcodes
 
-[Run in EVM Codes playground](https://www.evm.codes/playground) with the mnemonic tab selected
+
+
+##### The Ethereum Virtual Machine (EVM) is a stack-based VM that has a relatively small instruction-set that run as opcodes
+
+#### There are three main parts to the EVM to know about
+
+- STACK
+- MEMORY
+- STORAGE
 
 #### Examples
+
+[Run in EVM Codes playground](https://www.evm.codes/playground) with the mnemonic tab selected
 
 ```
 push1 0x01 // stack: [1]
