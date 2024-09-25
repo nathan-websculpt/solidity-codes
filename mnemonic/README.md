@@ -2,9 +2,9 @@
 
 
 
-##### The Ethereum Virtual Machine (EVM) is a stack-based VM that has a relatively small instruction-set that run as opcodes
+##### The Ethereum Virtual Machine (EVM) is a stack-based VM that has a relatively small instruction-set that runs as opcodes
 
-#### There are three main parts to the EVM to know about
+#### There are three main parts of the EVM to know about
 
 - STACK
 - MEMORY
@@ -15,6 +15,8 @@
 [Run in EVM Codes playground](https://www.evm.codes/playground) with the mnemonic tab selected
 
 ```
+// simple stack example
+
 push1 0x01 // stack: [1]
 push1 0x02 // stack: [2, 1]
 push1 0x03 // [3, 2, 1]
@@ -24,6 +26,9 @@ swap2      // [1, 2, 3]
 ```
 
 ```
+// Another stack example
+// push 1, 2, and 3, duplicate 3, pop that 3 off, swap 3 and 1
+
 push1 0x01 // stack: [1]
 push1 0x02 // stack: [2, 1]
 push1 0x03 // [3, 2, 1]
@@ -35,6 +40,8 @@ swap2      // [1, 2, 3]
 ```
 
 ```
+// doing maths
+
 push1 0x01   // [1]
 push1 0x02   // [2, 1]
   
