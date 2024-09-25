@@ -9,25 +9,23 @@ contract A {
 
     Deployment[] public deployments;
 
-    event NewB(address indexed b, uint256 indexed index, string title);
+    event NewB(address indexed b, uint256 indexed index);
 
     function deployB(uint256 index, string memory title) external {
-        B b = new B(index, title);
-        deployments.push(Deployment(address(b), index, title));
-
-        emit NewB(address(b), index, title);
-    }
-
-    //testing ... returns string: 'hello'
-    function hello() public pure returns (string memory) {
+        bytes32 eventSig = keccak256("NewB(address,uint256)");
         assembly {
-            mstore(0x00, 0x20)
-            mstore(0x20, 0x5)
-            mstore(
-                0x40,
-                0x68656c6c6f000000000000000000000000000000000000000000000000000000
-            )
-            return(0x00, 0x60)
+            let f_mem := mload(0x40) // load free memory pointer
+            mstore(f_mem, index) 
+            mstore(f_mem, title) 
+            // create a new contract using the code at memory location 0x20
+            let b := create(0, 0x40, 0x1000)
+            // add the new contract to the deployments array
+            // let deploymentsSlot := deployments.slot
+            // mstore(add(deploymentsSlot, 0x40), b) // set bAddr
+            // mstore(add(deploymentsSlot, 0x60), index) // set index
+            // mstore(add(deploymentsSlot, 0x80), title) // set title
+
+            log3(0, 0, eventSig, b, index) // Emit event
         }
     }
 }
@@ -39,8 +37,8 @@ contract B {
     constructor(uint256 _index, string memory _title) {
         assembly {
             // set the index and title
-            sstore(0, _index)
-            sstore(1, _title)
+            sstore(0, mload(0x80))
+            sstore(1, mload(0x80))
         }
     }
 }

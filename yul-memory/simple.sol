@@ -9,7 +9,7 @@ contract MemTest {
 
         assembly {
             let f_mem := mload(0x40) // load free memory pointer
-            mstore(f_mem, 32) // store 32 at free memory pointer
+            mstore(f_mem, 32) // store 32 (0x20) at free memory pointer
         }
     }
 }
