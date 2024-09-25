@@ -1,0 +1,51 @@
+Context instructions that can read
+There are several, so here is a short list of instructions that can
+read from the global state and execution context.
+
+- caller [same as msg.sender] pushes the address that called the current context.
+- timestamp [block.timestamp] pushes the current block's timestamp.
+- staticcall can make a read-only call to another contract.
+- calldataload can load a chunk of the calldata in the current context.
+- sload can read a piece of data from persistent storage on the current contract.
+
+
+
+// see if caller is owner of contract
+// assuming owner's address is stored at slot 0x00
+
+caller        // [caller_address]
+
+push1 0×00    // [zero, caller_address]
+sload         // [owner_address, caller_address]
+
+eq            // [is_caller_owner]
+
+
+
+*******************************************************************************
+
+
+
+
+Context instructions that can write to the global state and the execution context.
+
+- sstore can store data to persistent storage.
+- logN can append data to the current transaction logs where N is the
+    number of special, indexed values in the log.
+- call can make a call to external code, which can also update the
+    global state.
+- create / create2 can deploy code to a new address, creating a new
+    contract.
+
+
+
+
+// store timestamp at slot zero
+
+timestamp     // [block_timestamp]
+push1 0×00    // [zero, block_timestamp]
+sstore        // []
+
+
+
+

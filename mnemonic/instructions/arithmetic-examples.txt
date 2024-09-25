@@ -1,0 +1,37 @@
+add, sub, mul, div, mod (modulus), exp (exponentiation), addmod (combines add with mod), mulmod (combines mul with mod)
+smul and sdiv will treat the values of signed integers
+
+Will pop two values off of the stack and perform arithmetic, and then push the resulting value onto the stack
+
+
+
+
+push1 0x01 // stack: [1]
+push1 0x02 // stack: [2, 1]
+add        // stack: [3]
+
+
+*********************************
+
+
+push1 0x01 // stack: [1]
+push1 0x02 // stack: [2, 1]
+sub        // stack: [1]
+
+
+********************************
+
+
+push1 0x01   // [1]
+push1 0x02   // [2, 1]
+  
+add          // [3] 
+  
+push1 0x02   // [2, 3]
+dup2         // [3, 2, 3]
+  
+mul          // [6, 3]
+  
+div          // [2]
+  
+pop          // []

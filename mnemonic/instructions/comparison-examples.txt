@@ -1,0 +1,18 @@
+Comparison will pop one or two values off of the stack, perform a
+comparison and based on the result, pushes either true (1) or false (0)
+onto stack
+
+- It / slt pushes true if the top stack value is less than the second.
+- gt / sgt pushes true if the top stack value is greater than the second.
+- eq pushes true if the top two stack values are equal.
+- iszero pushes true if the top stack value is zero (Commonly used as an inverse operator ... like !bool).
+
+
+push1 0x01 // [1]
+push1 0x02 // [2, 1]
+
+// returns: false = zero and true = one 
+eq         // [0]
+
+iszero     // [1]
+

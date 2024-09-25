@@ -1,0 +1,49 @@
+pop one or more values from the stack and perform bitwise operations on them.
+
+- and performs bitwise AND on the top two stack values.
+- or performs bitwise OR on the top two stack values.
+- xor performs bitwise Exclusive OR on the top two stack values.
+- not performs bitwise NOT on the top stack value.
+- shr / shl performs a bit-shift right and left, respectively.
+
+Example: 'and' is only 1 if both bits are 1; 'or' is 1 if either of the bits are 1
+
+//4-bit binary format
+//
+// one      |     0b 0001
+// two      |     0b 0010
+// three    |     0b 0011
+// four     |     0b 0100
+// five     |     0b 0101
+// six      |     0b 0110
+// seven    |     0b 0111
+// eight    |     0b 1000
+// nine     |     0b 1001
+// ten      |     0b 1010
+
+
+
+
+
+
+push1 0x01 // [0b0001]
+push1 0x02 // [0b0010, 0b0001]
+
+// shift 0b0001 left by two bits.
+
+shl        // [0b0100]
+
+push1 0x02 // [0b0010, 0b0100]
+
+// shift 0b0100 right by two bits.
+
+shr        //[0b0001]
+
+// flip the bits
+
+not        // [0b1110]
+
+
+
+
+
