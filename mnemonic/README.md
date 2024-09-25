@@ -5,6 +5,43 @@
 #### Examples
 
 ```
+push1 0x01 // stack: [1]
+push1 0x02 // stack: [2, 1]
+push1 0x03 // [3, 2, 1]
+
+swap2      // [1, 2, 3]
+
+```
+
+```
+push1 0x01 // stack: [1]
+push1 0x02 // stack: [2, 1]
+push1 0x03 // [3, 2, 1]
+dup1       // [3, 3, 2, 1]
+pop        // [3, 2, 1]
+
+swap2      // [1, 2, 3]
+
+```
+
+```
+push1 0x01   // [1]
+push1 0x02   // [2, 1]
+  
+add          // [3] 
+  
+push1 0x02   // [2, 3]
+dup2         // [3, 2, 3]
+  
+mul          // [6, 3]
+  
+div          // [2]
+  
+pop          // []
+
+```
+
+```
 // store timestamp at slot zero
 
 timestamp     // [block_timestamp]
