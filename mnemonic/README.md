@@ -8,7 +8,7 @@
 // store timestamp at slot zero
 
 timestamp     // [block_timestamp]
-push1 0×00    // [zero, block_timestamp]
+push1 0       // [zero, block_timestamp]
 sstore        // []
 
 ```
@@ -20,7 +20,7 @@ sstore        // []
 
 caller        // [caller_address]
 
-push1 0×00    // [zero, caller_address]
+push1 0       // [zero, caller_address]
 sload         // [owner_address, caller_address]
 
 eq            // [is_caller_owner]
